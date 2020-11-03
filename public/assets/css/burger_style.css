@@ -1,0 +1,76 @@
+body {
+    background-color: rgb(206, 155, 47);
+}
+h1, h2, #burger-img{
+    display: flex;
+    justify-content: center;
+}
+
+#burger-img{
+    height: 250px;
+    width: 250px;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+.grid{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr, 3fr;
+    align-items: center;
+    justify-items: center;
+    width: 75%;
+    margin: auto;
+}
+
+.burger-list {
+    height: 25px;
+    width: 400px;
+    margin: 10px;
+    border: 1px solid black;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.devour-btn {
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    border: none;
+    border-left: 1px solid black;
+    background-color: transparent; 
+    box-shadow: none;
+}
+
+#ca {
+    width: 400px;
+    height: 125px;
+    border-radius: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-align-last: center;
+}
+
+#submit-btn {
+    height: 25px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 35%;
+}
