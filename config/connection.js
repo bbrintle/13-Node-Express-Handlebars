@@ -2,7 +2,7 @@
 var mysql = require("mysql");
 const dbConfig = require("../config/db.config.js");
 
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
   host: dbConfig.HOST, //  localhost
   port: 3306,
   user: dbConfig.USER, //  root
