@@ -1,12 +1,13 @@
 // Set up MySQL connection.
 var mysql = require("mysql");
+const dbConfig = require("../config/db.config.js");
 
 var connection = mysql.createConnection({
-  host: "us-cdbr-east-02.cleardb.com", //  localhost
-  //port: 3306,
-  user: "bb1105db4edd7a", //  root
-  password: "6b730aa7", // <== Your Password Here!  password 
-  database: "heroku_7e017f0d24473c4" //  burgers_db
+  host: dbConfig.HOST, //  localhost
+  port: 3306,
+  user: dbConfig.USER, //  root
+  password: dbConfig.PASSWORD, // <== Your Password Here!  password 
+  database: dbConfig.DB //  burgers_db
 });
 
 // Make connection.
