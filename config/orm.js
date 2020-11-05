@@ -25,16 +25,15 @@ function objToSql(ob) {
     var value = ob[key];
     // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
-      // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+      // if string with spaces, add quotations (Big Boy Burger => 'Big Boy Burger')
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
+      // e.g. {name: 'Big Boy Burger'} => ["name='Big Boy Burger'"]
+      // e.g. {devoured: true} => ["devoured=true"]
       arr.push(key + "=" + value);
     }
   }
-
   // translate array of strings to a single comma-separated string
   return arr.toString();
 }
@@ -44,19 +43,14 @@ var orm = {
   all: function(tableInput, cb) {
     var queryString = `SELECT * FROM ${tableInput};`;
     connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
+      if (err) throw err
       cb(result);
     });
   },
   create: function(table, cols, vals, cb) {
     var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`;
     connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
+      if (err) throw err
       cb(result);
     });
   },
@@ -64,10 +58,7 @@ var orm = {
   update: function(table, objColVals, condition, cb) {
     var queryString = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition}`;
     connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
+      if (err) throw err
       cb(result);
       });
     },
@@ -75,10 +66,7 @@ var orm = {
     delete: function(table, condition, cb) {
       var queryString = `DELETE FROM ${table} WHERE ${condition}`;
       connection.query(queryString, function(err, result) {
-        if (err) {
-          throw err;
-        }
-  
+        if (err) throw err
         cb(result);
       });
   }
